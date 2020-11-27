@@ -27,7 +27,6 @@ class CameraEvent(object):
         return self.events[ident][0].wait()
 
     def set(self):
-        print("New frame available")
         """Invoked by the camera thread when a new frame is available."""
         now = time.time()
         remove = None
@@ -48,7 +47,6 @@ class CameraEvent(object):
             del self.events[remove]
 
     def clear(self):
-        print("Frame consumed")
         """Invoked from each client's thread after a frame was processed."""
         self.events[get_ident()][0].clear()
 
